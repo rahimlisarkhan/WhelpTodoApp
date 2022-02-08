@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import entryImage from "../../../../image/todo-img.png"
 import formImage from "../../../../image/form.png"
+import checkImage from "../../../../image/check.png"
 import Image from "../../../../components/Image"
 import { ContentStyled, EntryButton, EntryPanel, EntryField } from "./Content.styled";
 import Grow from '@mui/material/Grow';
@@ -8,12 +9,13 @@ import { useHistory } from "react-router-dom"
 
 
 export const Content: React.FC = () => {
-    
+
     let [getStart, setGetStart] = useState(true)
+    let [check, setCheck] = useState(false)
     let [textField, setTextField] = useState('')
     let [isError, setIsError] = useState(false)
-    let {push} = useHistory();
-    
+    let { push } = useHistory();
+
     const openClosePanel = (): void => {
         setGetStart(prev => !prev)
     }
@@ -23,15 +25,25 @@ export const Content: React.FC = () => {
             setIsError(true)
             return
         }
-        
-        localStorage.setItem("user",textField)
+
+        localStorage.setItem("user", textField)
         setIsError(false)
-        push("/todo")
+        setCheck(true)
+        setTimeout(()=>push("/todo"), 2000)
 
     }
 
     return (
         <ContentStyled>
+            <Grow
+                in={check}
+                style={{ transformOrigin: '0 0 10' }}
+                timeout={1200}
+            >
+                <EntryPanel none={getStart ? "true" : ""}>
+                    <Image width="200" src={checkImage} alt="Check Image" />
+                </EntryPanel>
+            </Grow>
             <Grow
                 in={!getStart}
                 style={{ transformOrigin: '0 0 10' }}
@@ -41,11 +53,12 @@ export const Content: React.FC = () => {
                     <Image src={formImage} alt="Entry Image" />
                     <EntryField
                         error={isError}
-                        onChange={({ target: { value } }):void => setTextField(value)}
+                        onChange={({ target: { value } }): void => setTextField(value)}
                     />
                     <EntryButton onClick={addNickName}>Complete</EntryButton>
                 </EntryPanel>
             </Grow>
+
             <Grow
                 in={getStart}
                 style={{ transformOrigin: '0 0 10' }}
