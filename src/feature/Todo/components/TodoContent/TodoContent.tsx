@@ -19,7 +19,7 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import Grow from '@mui/material/Grow';
 import { AppBar, Drawer, DrawerHeader } from './TodoContent.styled';
 import { useHistory } from 'react-router-dom';
-import UserAvatar from '../../../../components/UserAvatar';
+// import UserAvatar from '../../../../components/UserAvatar';
 import TodoList from '../TodoList';
 
 

@@ -8,7 +8,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 type Props = {
     handleRemoveFruit: (item: string) => void
-    item: string
+    item: any
 }
 
 export const TodoItem: React.FunctionComponent<Props> = ({ handleRemoveFruit, item }) => {
@@ -32,7 +32,7 @@ export const TodoItem: React.FunctionComponent<Props> = ({ handleRemoveFruit, it
                 <CheckButton check={check ? "true" : ""} onClick={() => setCheck(prev => !prev)}>
                     {check && <CheckIcon />}
                 </CheckButton>
-                {item}
+                {item?.title}
             </Box>
             <Box>
                 <IconButton>

@@ -1,2 +1,2 @@
-import { TodoContainer } from "./TodoContainer"
+import TodoContainer  from "./TodoContainer"
 export default TodoContainer 
