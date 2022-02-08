@@ -35,15 +35,7 @@ export const Content: React.FC = () => {
 
     return (
         <ContentStyled>
-            <Grow
-                in={check}
-                style={{ transformOrigin: '0 0 10' }}
-                timeout={1200}
-            >
-                <EntryPanel none={getStart ? "true" : ""}>
-                    <Image width="200" src={checkImage} alt="Check Image" />
-                </EntryPanel>
-            </Grow>
+       
             <Grow
                 in={!getStart}
                 style={{ transformOrigin: '0 0 10' }}
@@ -58,7 +50,15 @@ export const Content: React.FC = () => {
                     <EntryButton onClick={addNickName}>Complete</EntryButton>
                 </EntryPanel>
             </Grow>
-
+            <Grow
+                in={check}
+                style={{ transformOrigin: '0 0 0' }}
+                timeout={1200}
+            >
+                <EntryPanel none={getStart ? "true" : ""}>
+                    <Image width="100" src={checkImage} alt="Check Image" />
+                </EntryPanel>
+            </Grow>
             <Grow
                 in={getStart}
                 style={{ transformOrigin: '0 0 10' }}
@@ -66,7 +66,6 @@ export const Content: React.FC = () => {
             >
                 <EntryPanel none={!getStart ? "true" : ""}>
                     <Image src={entryImage} alt="Entry Image" />
-
                     <EntryButton onClick={openClosePanel}>Get Started</EntryButton>
                 </EntryPanel>
             </Grow>

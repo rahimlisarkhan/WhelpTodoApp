@@ -32,7 +32,7 @@ img{
 
 export const EntryButton = styled(Button).attrs(() => ({
     variant: "contained",
-    color: "secondary",
+    color: "warning",
     size: "large"
 }))`
 width: 300px;
@@ -42,7 +42,7 @@ height:50px;
 export const EntryField = styled(TextField).attrs(()=>({
     label:"Nickname",
     type:"text",
-    color:"secondary",
+    color:"warning",
     autoComplete:"current-password",
     variant:"filled",
 }))`
