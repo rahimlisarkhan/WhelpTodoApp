@@ -18,7 +18,7 @@ const TodoList = ({ state: { todosData } }: any) => {
 
     return (
         <TodoListContent>
-            <TodoAdd handleAddFruit={handleAddFruit} />
+            <TodoAdd />
             <List>
                 <TransitionGroup>
                     {todosData?.map((item:any) => (
@@ -39,6 +39,5 @@ const mapStateToProps = (state: any) => {
         }
     }
 }
-
 
 export default connect(mapStateToProps)(TodoList)
