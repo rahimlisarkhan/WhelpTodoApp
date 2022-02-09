@@ -13,8 +13,8 @@ const TodoPage: React.FC = () => {
             <Switch>
                 <Route exact path={"/todo/my-day"} component={MyDayPage} />
                 <Route exact path={"/todo/important"} component={ImportantPage} />
-                <Route component={Error404Page} />
                 <Redirect exact from="/todo" to="/todo/my-day"/>
+                <Route component={Error404Page} />
             </Switch>
         </Layout>
     )
