@@ -34,7 +34,7 @@ const TodoList = ({ todosData }: any) => {
 
     return (
         <TodoListContent>
-            <TodoAdd />
+           {history.location.pathname !== router.todo.children.important.href && <TodoAdd />}
             <List>
                 <TransitionGroup>
                     {state?.map((item: any) => (
