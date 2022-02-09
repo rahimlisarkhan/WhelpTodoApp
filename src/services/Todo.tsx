@@ -8,7 +8,14 @@ export const getTodos = async () => {
     return res
 }
 
-export const addTodos = async (form:any) => {
-    const res = await Axios.post("todos",form)
+export const addTodos = async (form: any) => {
+    const res = await Axios.post("todos", form)
     return res
 }
+
+export const deleteTodos = async (id: any) => {
+    const res = await Axios.delete(`todos/${id}`)
+    return res
+}
+
+

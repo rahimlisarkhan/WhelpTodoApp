@@ -13,7 +13,6 @@ import Loading from '../../../../components/Loading';
 
 const TodoList = ({ state: { todosData } }: any) => {
 
-    console.log(todosData);
 
 
     const handleAddFruit = () => {
@@ -38,8 +37,7 @@ const TodoList = ({ state: { todosData } }: any) => {
                 <TransitionGroup>
                     {todosData?.map((item:any) => (
                         <Collapse key={`todos-id-${item.id}`}>
-                            <TodoItem handleRemoveFruit={handleRemoveFruit} item={item} >
-                            </TodoItem>
+                            <TodoItem item={item} />
                         </Collapse>
                     ))}
                 </TransitionGroup>

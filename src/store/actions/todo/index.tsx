@@ -1,14 +1,19 @@
 import { toast } from "react-toastify";
-import { addTodos, getTodos } from "../../../services/Todo"
-import { ADD_TODO, FILL_TODOS } from "../../types/todo";
-
+import { addTodos, getTodos, deleteTodos } from "../../../services/Todo"
+import * as type from "../../types/todo";
 
 export const fillData = () => async (dispatch: any) => {
+    let data = localStorage.getItem(type.FILL_TODOS)
+
+    if (data) {
+        dispatch({ type: type.FILL_TODOS, payload: JSON.parse(data) })
+        return
+    }
 
     try {
         let { data } = await getTodos()
-        dispatch({ type: FILL_TODOS, payload: data })
-
+        dispatch({ type: type.FILL_TODOS, payload: data })
+        localStorage.setItem(type.FILL_TODOS, JSON.stringify(data))
     } catch (error) {
         toast.error("Error")
     }
@@ -19,7 +24,7 @@ export const addTodo = (todoForm: any) => async (dispatch: any) => {
     try {
         let { status } = await addTodos(todoForm)
         if (status === 201) {
-            dispatch({ type: ADD_TODO, payload: todoForm })
+            dispatch({ type: type.ADD_TODO, payload: todoForm })
             toast.success("Successfully added")
         }
 
@@ -27,3 +32,35 @@ export const addTodo = (todoForm: any) => async (dispatch: any) => {
         toast.error("Error")
     }
 }
+
+export const completedTodo = (todoID: number) => {
+    return { type: type.COMPLETED_TODO, payload: todoID }
+}
+
+
+export const addImportantTodo = (data:any) => {
+    return { type: type.IMPORTANT_TODO, payload: data }
+}
+
+
+export const deleteTodo = (todoID: number) => async (dispatch: any) => {
+
+    console.log(deleteTodo);
+    
+
+    try {
+        let { status } = await deleteTodos(todoID)
+
+        console.log(status);
+        
+
+        if (status === 200) {
+            dispatch({ type: type.DELETE_TODO, payload: todoID })
+            toast.success("Successfully deleted")
+        }
+
+    } catch (error) {
+        toast.error("Error")
+    }
+}
+
