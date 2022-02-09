@@ -14,8 +14,6 @@ const TodoAdd: React.FunctionComponent<Props> = ({ addTodo }) => {
     const [text, setText] = useState<null | string>('')
     const [error, setError] = useState(false)
 
-    // window.onkeydown = useCallback(({ code }) => code === "Enter" && addTodoItem(), [])
-
     const addTodoItem = () => {
         if (!text) {
             setError(true)
