@@ -6,6 +6,8 @@ import { AppBar } from './Header.styled';
 import Drawer from "../Drawer"
 import { useState } from 'react';
 import Navbar from "../Navbar"
+import UserAvatar from "../UserAvatar"
+import { MenuBarContent } from "./Header.styled"
 
 export const Header = () => {
     let [open, setOpen] = useState(false);
@@ -21,22 +23,25 @@ export const Header = () => {
         >
             <AppBar position="fixed" >
                 <Drawer isOpen={open} setIsOpen={handleClick}>
-                    <Navbar handleClick={handleClick}/>
+                    <Navbar handleClick={handleClick} />
                 </Drawer>
-                <Toolbar>
-                    <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        edge="start"
-                        onClick={handleClick}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant="h6" noWrap component="div">
-                        Whelp Todo App
-                    </Typography>
-                </Toolbar>
-                {/* <UserAvatar/> */}
+                <MenuBarContent>
+                    <Toolbar>
+                        <IconButton
+                            color="inherit"
+                            aria-label="open drawer"
+                            edge="start"
+                            onClick={handleClick}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                        <Typography variant="h6" noWrap component="div">
+                            Whelp Todo App
+                        </Typography>
+                    </Toolbar>
+                    <UserAvatar />
+                </MenuBarContent>
+
             </AppBar>
         </Grow>
     )

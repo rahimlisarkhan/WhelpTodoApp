@@ -7,9 +7,17 @@ import { Box } from "@material-ui/core";
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { connect } from "react-redux"
 import { completedTodo, addImportantTodo, deleteTodo } from "../../../../store/actions/todo"
+import { TodoItemType } from "../../../../interface/todo";
 
 
-const TodoItem: React.FunctionComponent<any> = ({ item, completedTodo, addImportantTodo, deleteTodo }) => {
+type Props = {
+    completedTodo?:any;
+    addImportantTodo?: any
+    deleteTodo?: any
+    item?: TodoItemType
+}
+
+const TodoItem: React.FunctionComponent<Props> = ({ item, completedTodo, addImportantTodo, deleteTodo }) => {
 
     const [check, setCheck] = useState<boolean | undefined>(item?.completed)
     const [important, setImportant] = useState<null | number>(item?.important ? 1 : 0)

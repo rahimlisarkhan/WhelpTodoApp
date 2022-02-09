@@ -34,7 +34,7 @@ export const addTodo = (todoForm: TodoItemType) => async (dispatch: AppDispatch)
     }
 }
 
-export const completedTodo = (todoID: number) => {
+export const completedTodo = (todoID: number | undefined | string) => {
     return { type: type.COMPLETED_TODO, payload: todoID }
 }
 
