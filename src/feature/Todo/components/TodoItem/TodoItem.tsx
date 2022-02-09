@@ -1,6 +1,6 @@
 import { TodoItemStyled, CheckButton } from "./TodoItem.styled"
 import CheckIcon from '@mui/icons-material/Check';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { IconButton } from "@mui/material";
 import Rating from '@mui/material/Rating';
 import { Box } from "@material-ui/core";
