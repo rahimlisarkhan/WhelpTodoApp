@@ -16,13 +16,7 @@ import { completedTodo, addImportantTodo, deleteTodo } from "../../../../store/a
 const TodoItem: React.FunctionComponent<any> = ({ item, completedTodo, addImportantTodo,deleteTodo }) => {
 
     const [check, setCheck] = useState<boolean>(item?.completed)
-    // const [important, setImportant] = useState(false)
-
-    // useEffect(() => {
-
-    //     setImportant(item?.important || false)
-    // }, [item])
-
+    const [important, setImportant] = useState<null | number>(item?.important ? 1  : 0)
 
     const handleImportant = (event: any, value: number | null) => {
 
@@ -30,6 +24,7 @@ const TodoItem: React.FunctionComponent<any> = ({ item, completedTodo, addImport
             id: item.id,
             important: value ? true : false
         }
+        setImportant(value)
         addImportantTodo(data)
 
     }
@@ -42,8 +37,6 @@ const TodoItem: React.FunctionComponent<any> = ({ item, completedTodo, addImport
         deleteTodo(item?.id)
     }
 
-    // important
-    // value={item?.important ? 1 : 0} 
     return (
         <TodoItemStyled check={check ? "true" : ""} >
             <Box>
@@ -54,7 +47,7 @@ const TodoItem: React.FunctionComponent<any> = ({ item, completedTodo, addImport
             </Box>
             <Box>
                 <IconButton>
-                    <Rating onChange={handleImportant} name="size-large" size="large" max={1} />
+                    <Rating onChange={handleImportant} name="size-large" size="large" value={important} max={1} />
                 </IconButton>
                 <IconButton onClick={handleDelete} >
                     <DeleteOutlineIcon />

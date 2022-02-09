@@ -14,7 +14,7 @@ const App = (props:any) => {
      <Suspense fallback={<Loading/>}>
         <Switch>
           <Route exact path="/" component={HomePage}/>
-          <Route exact path="/todo" component={TodoPage}/>
+          <Route path="/todo" component={TodoPage}/>
         </Switch>
       </Suspense>
     </AppProvider>

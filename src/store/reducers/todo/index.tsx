@@ -6,6 +6,7 @@ let initialState = {
 
 export const TodoReducer = (state = initialState, action: any) => {
     switch (action.type) {
+
         case type.FILL_TODOS:
             return { ...state, todos: action.payload }
 
