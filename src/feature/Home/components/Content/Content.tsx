@@ -35,7 +35,6 @@ export const Content: React.FC = () => {
 
     return (
         <ContentStyled>
-       
             <Grow
                 in={!getStart}
                 style={{ transformOrigin: '0 0 10' }}

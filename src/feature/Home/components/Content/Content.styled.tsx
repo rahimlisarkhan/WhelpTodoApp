@@ -17,6 +17,7 @@ export const ContentStyled = styled(Grid).attrs(() => ({
     item: true
 }))`
 display: flex;
+flex-direction: column !important;
 justify-content: center;
 align-items: center;
 `
