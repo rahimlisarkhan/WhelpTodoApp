@@ -9,7 +9,11 @@ import { ListItemStyled } from './Navbar.styled';
 import { router } from '../../util/router';
 
 
-export const Navbar = ({ handleClick }: any) => {
+type Props = {
+    handleClick: () => void
+}
+
+export const Navbar = ({ handleClick }: Props) => {
     let { push, location } = useHistory();
 
     const pushHref = (href: string): void => {

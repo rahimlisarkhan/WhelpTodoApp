@@ -20,7 +20,7 @@ export const Header = () => {
             timeout={1000}
         >
             <AppBar position="fixed" >
-                <Drawer rotate="left" isOpen={open} setIsOpen={handleClick}>
+                <Drawer isOpen={open} setIsOpen={handleClick}>
                     <Navbar handleClick={handleClick}/>
                 </Drawer>
                 <Toolbar>

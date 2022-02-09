@@ -4,9 +4,10 @@ import AddIcon from '@mui/icons-material/Add';
 import { v4 as uuidv4 } from 'uuid';
 import { connect } from "react-redux";
 import { addTodo } from "../../../../store/actions/todo"
+import { TodoItemType } from "../../../../interface/todo";
 
 type Props = {
-    addTodo: (form: any) => void
+    addTodo: (form: TodoItemType) => void
 }
 
 const TodoAdd: React.FunctionComponent<Props> = ({ addTodo }) => {
@@ -37,8 +38,8 @@ const TodoAdd: React.FunctionComponent<Props> = ({ addTodo }) => {
                 error={error}
                 placeholder={"Add a task"}
                 value={text}
-                onChange={(e: any) => setText(e.target.value)}
-
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setText(e.target.value)}
+                onKeyDown={(e:React.KeyboardEvent<HTMLInputElement>) => e.key === 'Enter' && addTodoItem()}
             />
         </TodoAddContent>
     )

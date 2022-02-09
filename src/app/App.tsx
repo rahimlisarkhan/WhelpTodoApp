@@ -7,8 +7,7 @@ const HomePage = lazy(() => import('../page/home/index'));
 const TodoPage = lazy(() => import('../page/todo/index'));
 
 
-const App = (props:any) => {
-  
+const App = () => {
   return (
     <AppProvider>
      <Suspense fallback={<Loading/>}>

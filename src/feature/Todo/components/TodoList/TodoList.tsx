@@ -9,9 +9,12 @@ import Loading from '../../../../components/Loading';
 import { useHistory } from 'react-router-dom';
 import { router } from "../../../../util/router"
 import { useEffect, useState } from 'react';
+import { Typography } from '@mui/material';
+import { RootState } from '../../../../store';
+import { TodoItemType } from '../../../../interface/todo';
 
 const TodoList = ({ todosData }: any) => {
-
+    
     let [state,setState]=useState(todosData)
     let [loading,setLoading] = useState(false)
     let history = useHistory()
@@ -19,7 +22,7 @@ const TodoList = ({ todosData }: any) => {
     useEffect(()=>{
         setLoading(true)
         if(history.location.pathname === router.todo.children.important.href){
-            setState(todosData.filter((todo:any) => todo.important))
+            setState(todosData.filter((todo:TodoItemType) => todo.important))
             setLoading(false)
             return
         }
@@ -37,18 +40,23 @@ const TodoList = ({ todosData }: any) => {
            {history.location.pathname !== router.todo.children.important.href && <TodoAdd />}
             <List>
                 <TransitionGroup>
-                    {state?.map((item: any) => (
-                        <Collapse key={`todos-id-${item.id}`}>
-                            <TodoItem item={item} />
-                        </Collapse>
-                    ))}
+                    {state.length 
+                        ? state?.map((item: TodoItemType) => (
+                            <Collapse key={`todos-id-${item.id}`}>
+                                <TodoItem item={item} />
+                            </Collapse>
+                        ))
+                        
+                        : <Typography variant="h4" align="center" >Empty Todo</Typography>
+                        }
+                    
                 </TransitionGroup>
             </List>
         </TodoListContent >
     );
 }
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: RootState) => {
     return {
         todosData: state.todo.todos
     }

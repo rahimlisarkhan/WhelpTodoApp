@@ -8,20 +8,16 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { connect } from "react-redux"
 import { completedTodo, addImportantTodo, deleteTodo } from "../../../../store/actions/todo"
 
-// type Props = {
-//     // completedTodo?: ((id: number) => void) | undefined
-//     item?: any
-// }
 
-const TodoItem: React.FunctionComponent<any> = ({ item, completedTodo, addImportantTodo,deleteTodo }) => {
+const TodoItem: React.FunctionComponent<any> = ({ item, completedTodo, addImportantTodo, deleteTodo }) => {
 
-    const [check, setCheck] = useState<boolean>(item?.completed)
-    const [important, setImportant] = useState<null | number>(item?.important ? 1  : 0)
+    const [check, setCheck] = useState<boolean | undefined>(item?.completed)
+    const [important, setImportant] = useState<null | number>(item?.important ? 1 : 0)
 
-    const handleImportant = (event: any, value: number | null) => {
+    const handleImportant = (event: React.SyntheticEvent<EventTarget>, value: number | null) => {
 
         let data = {
-            id: item.id,
+            id: item?.id,
             important: value ? true : false
         }
         setImportant(value)

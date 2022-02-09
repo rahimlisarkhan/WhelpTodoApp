@@ -1,8 +1,10 @@
 import { toast } from "react-toastify";
+import { AppDispatch } from "../..";
+import { TodoItemType } from "../../../interface/todo";
 import * as service from "../../../services/Todo"
 import * as type from "../../types/todo";
 
-export const fillData = () => async (dispatch: any) => {
+export const fillData = () => async (dispatch: AppDispatch) => {
     let data = localStorage.getItem(type.FILL_TODOS)
 
     if (data) {
@@ -19,7 +21,7 @@ export const fillData = () => async (dispatch: any) => {
     }
 }
 
-export const addTodo = (todoForm: any) => async (dispatch: any) => {
+export const addTodo = (todoForm: TodoItemType) => async (dispatch: AppDispatch) => {
     try {
         let { status } = await service.addTodos(todoForm)
         if (status === 201) {
@@ -36,11 +38,11 @@ export const completedTodo = (todoID: number) => {
     return { type: type.COMPLETED_TODO, payload: todoID }
 }
 
-export const addImportantTodo = (data:any) => {
+export const addImportantTodo = (data:AppDispatch) => {
     return { type: type.IMPORTANT_TODO, payload: data }
 }
 
-export const deleteTodo = (todoID: number) => async (dispatch: any) => {
+export const deleteTodo = (todoID: number) => async (dispatch: AppDispatch) => {
 
     try {
         let { status } = await service.deleteTodos(todoID)

@@ -1,5 +1,12 @@
 import { Box, Grid, Button, TextField } from "@mui/material";
 import styled, { keyframes } from "styled-components";
+import { ThemeProps } from "../../../../interface/theme";
+
+
+type EntryPanelStyledProps = {
+  theme?:ThemeProps,
+  none?:string,
+}
 
 
 const rotate = keyframes`
@@ -22,8 +29,8 @@ justify-content: center;
 align-items: center;
 `
 
-export const EntryPanel: any = styled(Box)`
-display: ${({ none }: any) => none ? "none" : "flex"};
+export const EntryPanel: React.FunctionComponent<EntryPanelStyledProps> = styled(Box)`
+display: ${({ none }: EntryPanelStyledProps) => none ? "none" : "flex"};
 flex-direction: column;
 align-items: center;
 img{

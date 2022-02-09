@@ -1,7 +1,8 @@
+import { RouterType } from "../interface/router";
 
 
 
-export const router: any = {
+export const router: RouterType = {
     "home": {
         "href": "/"
     },

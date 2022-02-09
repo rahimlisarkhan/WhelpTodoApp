@@ -4,21 +4,23 @@ import { fillData } from "../../../store/actions/todo"
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
-import {DrawerHeader, TodoContentStyled } from './TodoContainer.styled';
+import { DrawerHeader, TodoContentStyled } from './TodoContainer.styled';
 import TodoList from '../components/TodoList';
 import { Grow } from '@mui/material';
+import { useHistory } from "react-router-dom";
 
 type Props = {
     fillData: () => void,
 }
 
 const TodoContainer = ({ fillData }: Props) => {
+    let { location } = useHistory()
 
     useEffect(() => {
         fillData()
 
     }, [fillData])
-    
+
     return (
         <TodoContentStyled >
             <CssBaseline />
@@ -30,9 +32,9 @@ const TodoContainer = ({ fillData }: Props) => {
                 <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                     <DrawerHeader />
                     <Typography variant="h4">
-                            My Day
+                        {location.pathname?.split("/todo/")[1][0].toUpperCase()}{location.pathname?.split("/todo/")[1].slice(1)}
                     </Typography>
-                    <TodoList/>
+                    <TodoList />
                 </Box>
             </Grow>
         </TodoContentStyled>
