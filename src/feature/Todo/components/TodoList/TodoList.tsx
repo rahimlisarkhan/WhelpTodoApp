@@ -13,20 +13,22 @@ import { useEffect, useState } from 'react';
 const TodoList = ({ todosData }: any) => {
 
     let [state,setState]=useState(todosData)
-
+    let [loading,setLoading] = useState(false)
     let history = useHistory()
 
     useEffect(()=>{
+        setLoading(true)
         if(history.location.pathname === router.todo.children.important.href){
             setState(todosData.filter((todo:any) => todo.important))
+            setLoading(false)
             return
         }
         setState(todosData)
-
+        setLoading(false)
     },[history.location.pathname,todosData])
 
 
-    if (!state) {
+    if (!state || loading) {
         return <Loading />
     }
 
