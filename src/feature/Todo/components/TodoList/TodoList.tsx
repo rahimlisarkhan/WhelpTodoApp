@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Collapse from '@mui/material/Collapse';
 import List from '@mui/material/List';
 import { TransitionGroup } from 'react-transition-group';
@@ -10,21 +9,8 @@ import Loading from '../../../../components/Loading';
 
 
 
-
 const TodoList = ({ state: { todosData } }: any) => {
 
-
-
-    const handleAddFruit = () => {
-        // const nextHiddenItem = FRUITS.find((i) => !TodosData.includes(i));
-        // if (nextHiddenItem) {
-        //     setTodosData((prev) => [nextHiddenItem, ...prev]);
-        // }
-    };
-
-    const handleRemoveFruit = (item: string) => {
-        // setTodosData((prev) => [...prev.filter((i) => i !== item)]);
-    };
 
     if(!todosData){
         return <Loading/>

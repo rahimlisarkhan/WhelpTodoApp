@@ -6,11 +6,10 @@ import { connect } from "react-redux";
 import { addTodo } from "../../../../store/actions/todo"
 
 type Props = {
-    handleAddFruit: () => void
     addTodo: (form: any) => void
 }
 
-const TodoAdd: React.FunctionComponent<Props> = ({ handleAddFruit, addTodo }) => {
+const TodoAdd: React.FunctionComponent<Props> = ({ addTodo }) => {
     const [text, setText] = useState<null | string>('')
     const [error, setError] = useState(false)
 
@@ -22,11 +21,9 @@ const TodoAdd: React.FunctionComponent<Props> = ({ handleAddFruit, addTodo }) =>
             return
         }
 
-        handleAddFruit()
         setError(false)
         setText('')
         addTodo({ id: uuidv4(), title: text })
-
     }
 
     return (
